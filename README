@@ -27,3 +27,9 @@ do a more intensive and interesting analysis.
 The analysis is in pure python; it wasn't big enough to demand robust libraries such
 as pandas and scipy. Simple sorting greatly reduces the computational quotient.
 However you can always use other tools for analysis :-)
+
+
+====================================================================================
+I have hosted the app on Heroku Cloud, you can view it here:
+    http://matt-gathu-open-data-2014-hack.herokuapp.com/
+
