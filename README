@@ -1,0 +1,29 @@
+====================================================================================
+            OPEN DATA DAY 2014 HACK
+====================================================================================
+
+This is a simple hack I need for the Open Data Kenya 2014 Open Data Day, with the help
+of: >>>
+    >>>
+
+
+The application visualizes some scraped data that's in the csv file.
+
+The data is on form one students admissions to National Schools in 2014.
+The visualization simply shows a ratio of the students from public primary
+schools versus those from private schools.
+
+The is a lot of the other great analysis that can be done on the data,
+and the dataset is to be cleaned and be publicly shared.
+
+
+There were about 16000 records, so you can get some more interesting trends from 
+it. 
+
+My project/hack was time constrained hence the simplicity but I might improve and 
+do a more intensive and interesting analysis.
+
+
+The analysis is in pure python; it wasn't big enough to demand robust libraries such
+as pandas and scipy. Simple sorting greatly reduces the computational quotient.
+However you can always use other tools for analysis :-)

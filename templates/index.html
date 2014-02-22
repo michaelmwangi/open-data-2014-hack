@@ -1,0 +1,115 @@
+{% extends "base.html"%}
+
+{% block title %}2014 Admissions{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Pick A School</a></li>
+          </ul>
+          <select class="nav nav-sidebar" name="school" form="visualform">
+            {% for school in schools %}
+              <option value="{{ school }}">{{ school }}</option>
+            {% endfor %}
+          </select>
+          <ul class="nav nav-sidebar">
+            <form action="{{ url_for('visualize') }}" method="post" id="visualform">
+              <button name="" type="submit">
+                <i class="fa fa-bar-chart-o fa-2x" style="color: #428bca;">visualize</i>
+              </button>
+            </form>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li>.</li>
+            <li>.</li>
+            <li>.</li>
+            <li class=""><a href="#">Download CSV data</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 main">
+          <h2 class="page-header"><a name="dashboard"></a>Form 1 2014 Admissions: private vs public school student ratio</h2>
+
+          <!--<div class="row placeholders">
+            <div class="col-xs-4 col-sm-2 placeholder">
+                <a href="#gasusage"><span><i class="fa fa-fire fa-4x"></i></span>
+                <h4>Usage</h4>
+                <span class="text-muted">Gas Usage per Meter</span></a>
+            </div>
+            
+            <div class="col-xs-4 col-sm-2 placeholder">
+                <a href="#meteruptime"><span><i class="fa fa-bar-chart-o fa-4x"></i></span>
+                <h4>Uptime</h4>
+                <span class="text-muted">Meter Uptimes</span></a>
+            </div>
+            
+            <div class="col-xs-4 col-sm-2 placeholder">
+                <a href="#autopayments"><span><i class="fa fa-money fa-4x"></i></span>
+                <h4>Payments</h4>
+                <span class="text-muted">Automatic Payments</span></a>
+            </div>
+            
+            
+            <div class="col-xs-4 col-sm-2 placeholder">
+                <a href="#leaks"><span><i class="fa fa-filter fa-4x"></i></span>
+                <h4>Leaks</h4>
+                <span class="text-muted">Gas Leaks per Meter</span></a>
+            </div>
+          </div>-->
+          
+          <h3 class="sub-header"><a name="meteruptime">
+                {% if subheader is none %}   
+                 pick a school and click visualize
+                {% else %}
+                    {{ subheader }}
+                {% endif %}
+          </a></h3>
+          <div id="container" style="max-width: 600px; height: 400px; margin: 0 0 0 0"></div>
+          </div>
+      </div>
+    </div>
+    <script>
+        $(function () {
+      $('#container').highcharts({
+          chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false
+          },
+          title: {
+              text: 'public vs private school students '
+          },
+          tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      color: '#000000',
+                      connectorColor: '#000000',
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                  }
+              }
+          },
+          series: [{
+              type: 'pie',
+              name: 'category share',
+              data: {% if school_data is none %}
+                    [ ['Private',   50],
+                     ['Public',     50]]
+                    {% else %}
+                    {{ school_data|safe }}
+                    {% endif %}
+          }]
+      });
+  });
+      
+
+    </script>
+    
+</body>
+{% endblock %}
