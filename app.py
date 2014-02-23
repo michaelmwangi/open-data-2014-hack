@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: disable-msg=C0103
 """
 .. module:: app
     :platform:: web
@@ -64,7 +65,7 @@ def index():
 
     """
     
-    return render_template('index.html',schools=schs, 
+    return render_template('index.html', schools=schs, 
             school_data=None, subheader=None)
 
 
